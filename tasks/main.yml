@@ -28,3 +28,5 @@
 - name: start the memcached service
   service: name=memcached state=started enabled=yes
 
+- include: tune.yml
+  when: memcached_kernel_tuning|bool

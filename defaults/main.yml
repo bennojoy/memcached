@@ -1,8 +1,21 @@
 ---
-
 memcached_port: 11211
 memcached_listen_address: 0.0.0.0
 memcached_max_conn: 1024
 memcached_cache_size: 64
 memcached_fs_file_max: 756024
-
+memcached_kernel_tuning: false
+memcached_kernel_params:
+  - { name: net.ipv4.ip_local_port_range, value: '"1024 65535"' }
+  - { name: net.ipv4.tcp_slow_start_after_idle, value: 0 }
+  - { name: net.core.somaxconn, value: 65535 }
+  - { name: net.core.netdev_max_backlog, value: 65536 }
+  - { name: net.ipv4.tcp_tw_reuse, value: 1 }
+  - { name: net.ipv4.tcp_fin_timeout, value: 15 }
+  - { name: net.ipv4.tcp_keepalive_time, value: 3600 }
+  - { name: net.ipv4.tcp_keepalive_intvl, value: 20 }
+  - { name: net.ipv4.tcp_keepalive_probes, value: 5 }
+  - { name: net.ipv4.tcp_max_syn_backlog, value: 12288 }
+  - { name: net.ipv4.tcp_synack_retries, value: 2 }
+  - { name: vm.nr_hugepages, value: 32 }
+  - { name: vm.hugetlb_shm_group, value: 1600 }

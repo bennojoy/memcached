@@ -1,0 +1,8 @@
+---
+- name: Tuning /etc/sysctl.conf
+  sysctl: name={{ item.name }}
+          value={{ item.value }}
+          state=present
+  with_items: memcached_kernel_params
+  notify:
+    - restart memcached
