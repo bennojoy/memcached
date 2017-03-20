@@ -13,7 +13,7 @@
     state: present
     update_cache: yes
   with_items: "{{memcached_ubuntu_pkgs}}"
-  environment: env
+  environment: "{{env}}"
   when: ansible_os_family == "Debian"
 
 - name: Copy the client configuration file
